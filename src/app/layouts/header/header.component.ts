@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+  menuItems = [
+    { path: '/directivas', label: 'Directivas' },
+    { path: '/contacto', label: 'Contacto' }
+  ];
 }
