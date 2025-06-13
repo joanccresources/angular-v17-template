@@ -1,7 +1,9 @@
-<header id="header">
+<header id="header" class="shadow">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" [routerLink]="['/']">
+        <img src="assets/img/logo-angular.svg" alt="Logo" class="img-fluid" width="50">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,7 +11,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li 
             *ngFor="let item of menuItems"
-            class="nav-item"            
+            class="nav-item"
             >
             <a 
               class="nav-link"
@@ -25,3 +27,21 @@
     </div>
   </nav>
 </header>
+<!-- 
+atributo="valor"	Asignación estática (como HTML tradicional).
+[atributo]="expresión"	Binding dinámico a una variable o expresión de TypeScript.
+
+Desglose:
+- [routerLink]="item.path": Angular crea un enlace interno (sin recargar la página) que navega a la ruta definida en item.path. Por ejemplo, si item.path es /directivas, hará que ese <a> navegue a /directivas.
+  * Acá estás usando binding.
+  * item.path es una variable del componente, no un string escrito directamente.
+  * Angular evaluará item.path y generará el enlace dinámicamente.
+
+- routerLinkActive="active": Angular aplicará la clase "active" automáticamente si la ruta coincide.
+  * Esto sí es un valor estático, porque le estás diciendo que aplique la clase "active" si la ruta está activa.
+  * No necesitás binding dinámico porque "active" no viene de una variable.
+- [routerLinkActiveOptions]="{exact:true}": Fuerza a que la coincidencia sea exacta.
+  * { exact: true } es un objeto JavaScript, no un string.
+  * Por eso necesitás binding ([]), para que Angular lo evalúe como expresión y no como texto plano.
+- Si no lo ponés, el link de /directivas también quedaría como "activo" si estás en /directivas/detalle.
+ -->
